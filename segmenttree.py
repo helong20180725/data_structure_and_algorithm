@@ -2,6 +2,8 @@
 Segment Tree structure:
 This structure is used to get the max value or summation of a segment in a list
 """
+
+
 class SegmentTreeNode:
 
     def __init__(self, start, end):

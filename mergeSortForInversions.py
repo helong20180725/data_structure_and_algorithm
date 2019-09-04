@@ -37,7 +37,7 @@ def merge_sort(array, inversion, level):
     print("------"*level+"{}".format(array))
     print("------"*level+"inversions: {}".format(inversion))
     return inversion
-
-test = [5, 4, 3, 2, 1]
-print(merge_sort(test, 0, 0))
-print(test)
+if __name__ == "__main__":
+    test = [5, 4, 3, 2, 1]
+    print(merge_sort(test, 0, 0))
+    print(test)
