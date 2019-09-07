@@ -40,7 +40,7 @@ class Trie:
             return cur.isWord
 
     def startsWith(self, prefix):
-        # write your code here
+        
         cur = self.root
         i = 0
 
