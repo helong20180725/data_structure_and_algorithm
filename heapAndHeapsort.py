@@ -1,8 +1,18 @@
 # min-heap
+from collections import OrderedDict
+
+
 class Heap:
 
     def __init__(self):
         self.data = []
+        # The dict is useless now. Later it will be used for hashheap.
+        self.position = OrderedDict()
+        # mode is for min or max heap later.
+        self.mode = None
+
+    def empty(self):
+        return bool(self.data)
 
     def _parent(self, index):
         # relation between child and parent : index(left_child) = 2 * index(parent) + 1
@@ -66,13 +76,18 @@ class Heap:
         return pop_value
 
     def remove(self, value):
-        if not self.data:
+        if not self.empty():
             return None
         # O(n) for list.index()
-        index = self.data.index(value)
+        try:
+            index = self.data.index(value)
+        except:
+            print("'{}' is not in the heap".format(value))
+            return None
         self._swap(index, len(self.data) - 1)
         pop_value = self.data.pop()
         self._down_heap(index)
+        self._up_heap(index)
         return pop_value
 
     def print_min(self):
@@ -123,6 +138,8 @@ if __name__ == '__main__':
     heap = Heap()
     for number in rand_list:
         heap.push(number)
+    heap.print_heap()
+    heap.remove(20)
     heap.print_heap()
     heapify(rand_list)
     print(rand_list)
