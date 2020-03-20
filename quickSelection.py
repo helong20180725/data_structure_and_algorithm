@@ -40,5 +40,5 @@ def quick_select(a, k, begin, end):
 if __name__ == '__main__':
     a = [4, 2, 0, 10, 2, 22, 34, 88, 23, 2, 1, 12, 122, 345, 111, 90]
 
-    k = 17
+    k = 7
     print(quick_select(a, k, 0, len(a)-1))

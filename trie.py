@@ -40,10 +40,8 @@ class Trie:
             return cur.isWord
 
     def startsWith(self, prefix):
-        
         cur = self.root
         i = 0
-
         while i < len(prefix) and prefix[i] in cur.children:
             cur = cur.children[prefix[i]]
             i += 1
