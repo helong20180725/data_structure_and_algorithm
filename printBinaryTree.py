@@ -23,26 +23,28 @@ class Printer:
         # The length of " " is decided by the maximum digits number
         # The index of node in the 2d list is for the position of tree node
         tree_list = [[" " for _ in range(width)] for _ in range(depth)]
-        self.fill(root, 0, 0, width-1, tree_list)
+        self._fill(root, 0, 0, width-1, tree_list)
         
         for level in range(depth):
             print("".join(tree_list[level]))
 
-    def fill(self, node, level, left, right, tree_list):
+    def _fill(self, node, level, left, right, tree_list):
         if node:
             mid = (left + right) // 2
             tree_list[level][mid] = str(node.val)
-            self.fill(node.left, level+1, left, mid - 1, tree_list)
-            self.fill(node.right, level+1, mid + 1, right, tree_list)
+            self._fill(node.left, level+1, left, mid - 1, tree_list)
+            self._fill(node.right, level+1, mid + 1, right, tree_list)
 
-    def get_depth(self, node):
+    def _get_depth(self, node):
         if not node:
             return 0
-        left = self.get_depth(node.left)
-        right = self.get_depth(node.right)
+        left = self._get_depth(node.left)
+        right = self._get_depth(node.right)
         return max(left, right) + 1
 
+
 if __name__ == "__main__":
+
     node_list = [1, 2, 3, 4, None, 6, 8, 9, 1, None, None, 4, 2, 2, 3, None, None, 1, 2]
     root = build_tree(node_list, 0)
     printer = Printer()
